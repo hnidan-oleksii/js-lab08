@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <style>
+        .image-container {
+            text-align: center;
+        }
+        .image-caption {
+            font-size: 20px;
+            transition: font-size 0.5s;
+            cursor: pointer;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="https://cdn.pixabay.com/photo/2024/04/08/14/09/nature-8683570_1280.jpg" alt="Зображення" onclick="changeImageSize()">
+    <p id="image-caption" class="image-caption" onclick="changeCaptionColor()">Клацніть на мене</p>
+</div>
+
+<script>
+    let defaultImageSize = true;
+    let defaultCaptionColor = true;
+
+    function changeImageSize() {
+        const image = document.querySelector(".image-container img");
+        const caption = document.getElementById("image-caption");
+
+        if (defaultImageSize) {
+            image.style.width = "200px";
+            image.style.height = "200px";
+            caption.textContent = "Клацніть на мене ще раз";
+        } else {
+            image.style.width = "150px";
+            image.style.height = "150px";
+            caption.textContent = "Клацніть на мене";
+        }
+
+        defaultImageSize = !defaultImageSize;
+    }
+
+    function changeCaptionColor() {
+        const caption = document.getElementById("image-caption");
+        if (defaultCaptionColor) {
+            caption.style.color = "red";
+        } else {
+            caption.style.color = "initial";
+        }
+
+        defaultCaptionColor = !defaultCaptionColor;
+    }
+</script>
+
+</body>
+</html>

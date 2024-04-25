@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mouse Events</title>
+        <style>
+            #row4 {
+                transition: background-color 0.5s;
+            }
+            #row4:hover {
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="row1" class="row"><h1>П'ять подій з мишкою</h1></div>
+        <div id="row2" class="row" onclick="secondRowActions()">Клацніть на мене мишкою</div>
+        <div id="row3" class="row" onmousedown="onMouseDown()" onmouseup="onMouseUp()">На цьому тексті натисніть, потримайте і відпустіть ліву кнопку мишки</div>
+        <div id="row4" class="row" onmouseover="onMouseOver()" onmouseout="onMouseOut()">Повільно проведіть курсором мишки по цій написи</div>
+
+        <script>
+            let defaultStyleSecondRow = true;
+            function secondRowActions() {
+                const row = document.getElementById("row2");
+
+                if (defaultStyleSecondRow) {
+                    row.style = "font-size: 48pt; color: white; background-color: lightblue;"
+                } else {
+                    row.style = "all: initial;"
+                }
+                defaultStyleSecondRow = !defaultStyleSecondRow;
+            }
+
+            function onMouseDown() {
+                document.getElementById("row3").style = "background-color: green";
+            }
+
+            function onMouseUp() {
+                document.getElementById("row3").style = "background-color: yellow";
+            }
+            
+            function onMouseOver() {
+                document.getElementById("row4").style = "background-color: red";
+            }
+
+            function onMouseOut() {
+                document.getElementById("row4").style = "background-color: lightblue";
+            }
+        </script>
+    </body>
+</html>
